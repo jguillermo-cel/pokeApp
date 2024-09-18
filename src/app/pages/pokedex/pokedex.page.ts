@@ -1,5 +1,8 @@
 import { LitElement, css, html } from "lit";    
 import { customElement } from "lit/decorators.js";
+
+import "./../../shared/header/header.component";
+import "./../../components/pokemon/pokemon.component";
 /*import { PokedexService } from "src/app/services/pokedex.service";
 import { Pokedex } from "src/app/models/pokedex.model";*/
 
@@ -15,7 +18,10 @@ export class PokedexPage extends LitElement {
 
     render() {
         return html`
-            <h1>Pokedex</h1>
+            <header-component title="Pokedex"></header-component>
+            <div class="">
+                <pokemon-component></pokemon-component>
+            </div>
         `;  
     }
 }

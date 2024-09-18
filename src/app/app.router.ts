@@ -8,6 +8,7 @@ import "./router-components.imports";
 class AppRouter extends LitElement {
     private router = new Router(this, [
         { path: "/", render: () => html`<pokedex-page></pokedex-page>` },
+        { path: "/pokemon/:id", render: ({id}) => html`<evolution-list-page idPokemon=${id}></evolution-list-page>` },
         { path: "/*", render: () => html`<not-found-page></not-found-page>` }
     ]);
 
