@@ -16,6 +16,8 @@ export class PokemonType extends LitElement {
                 border-radius: 50px;
                 padding: 5px 10px;
                 font-size: 0.8rem;
+                min-width: 100px;
+                text-align: center;
             }
         `;
     }

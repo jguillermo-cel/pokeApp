@@ -3,6 +3,9 @@ import { customElement } from "lit/decorators.js";
 
 import "./../../shared/header/header.component";
 import "./../../components/pokemon/pokemon.component";
+import { consume } from "@lit/context";
+import { Level, pokemonContext, levelContext } from "../../context/PokemonList.context";
+import { Pokemon } from "../../interfaces/pokemon.interface";
 /*import { PokedexService } from "src/app/services/pokedex.service";
 import { Pokedex } from "src/app/models/pokedex.model";*/
 
@@ -16,11 +19,27 @@ export class PokedexPage extends LitElement {
         `;
     }
 
+    @consume({context: levelContext})
+    private _level?: Level;
+
+    @consume({context: pokemonContext, subscribe: true })
+    private _pokemonList?: Pokemon[];
+
+    constructor() { 
+        super();
+        
+    }
+
+
+
     render() {
+        console.log(this._level);
+        console.log("this._pokemonList");
+        console.log(this._pokemonList);
         return html`
             <header-component title="Pokedex"></header-component>
             <div class="">
-                <pokemon-component></pokemon-component>
+                ${this._pokemonList?.map((pokemon: Pokemon) => html`<pokemon-component .pokemon=${pokemon} ></pokemon-component>`) }
             </div>
         `;  
     }

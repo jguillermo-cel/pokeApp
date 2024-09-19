@@ -37,6 +37,11 @@ export class PokemonComponent extends LitElement {
             .card_image img{
                 max-width: 150px;    
             }
+
+            .card_body{
+                display: flex;
+                justify-content: space-around;
+            }
         `;
     }
 
@@ -73,6 +78,7 @@ export class PokemonComponent extends LitElement {
     }
 
     isRedirect(): boolean {
+        if (!this.pokemon.evolutions) return false;
         return this.pokemon.evolutions.length > 0;
     }
 

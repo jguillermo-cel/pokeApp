@@ -1,28 +1,49 @@
 import { html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { levelContext, pokemonContext } from '../context/PokemonList.context';
+import { levelContext, PokemonContext, pokemonContext } from '../context/PokemonList.context';
 import { Pokemon } from "../interfaces/pokemon.interface";
-import { ContextProvider } from "@lit/context";
+import { ContextProvider, provide } from "@lit/context";
 import { ContextConsumer } from "@lit/context";
+import { Task } from "@lit/task";
+import { fetchPokemon } from "./pokemonfetch.service";
 
 const COLORS = ['blue', 'orange', 'green', 'purple'];
 
 @customElement("pokedex-data")
 export class PokedexData extends LitElement {
-  /*static pokemons: any[] = [];
+  
+  pokemons: any[] = [];
+
+
 
   async loadPokemons() {
     try {
       const response = await fetch("http://localhost:3002/pokemon");
       const data = await response.json();
-      PokedexData.pokemons = data;
+      this.pokemons = data;
       console.log('pokedex data');
-      console.log(PokedexData.pokemons);
+      console.log(data);
+      this._providerPoke.setValue(this.pokemons);
     } catch (error) {
       console.error("Error al cargar pokemons:", error);
     }
-  }*/
+  }
+  
 
+
+  constructor() {
+    super();
+  }
+
+/*
+    private _PokemonTask = new Task(this, {
+
+      task: async () => {
+        return await fetchPokemon();
+      },
+      args: () => [],
+    });
+*/
   pokemonItem: Pokemon = {
     name: "pokemon nombre",
     type: "fire",
@@ -55,12 +76,16 @@ export class PokedexData extends LitElement {
     initialValue: []
   });
 
-  constructor() {
-    super();
-    console.log();
-  }
+  private _consumerPoke = new ContextConsumer(this, {
+    context: pokemonContext,
+    callback: () => {
+      this._providerPoke.setValue(this.pokemons);
+    }
+  });
+
 
   render() {
+    this.loadPokemons();
     return html`<slot></slot>`;
   }
 

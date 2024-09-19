@@ -4,6 +4,11 @@ import { Router } from "@lit-labs/router";
 
 import "./router-components.imports";
 
+import "./pages/pokedex/pokedex.page";
+import "./pages/evolution-list/evolution-list.page";
+import "./pages/404/not-found.page";
+import "./services/pokedex-data.service";
+
 @customElement("app-router")
 class AppRouter extends LitElement {
     private router = new Router(this, [
@@ -13,7 +18,12 @@ class AppRouter extends LitElement {
     ]);
 
     render(){
-        return this.router.outlet();
+        return html`
+            <pokedex-data>
+                ${this.router.outlet()}
+            </pokedex-data>
+        `;
+
     }
 }
 
