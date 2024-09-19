@@ -3,7 +3,6 @@ import { customElement, property } from "lit/decorators.js";
 import { Pokemon } from "../interfaces/pokemon.interface";
 import { pokemonContext } from "../context/PokemonList.context";
 import { ContextProvider } from "@lit/context";
-import { ContextConsumer } from "@lit/context";
 
 
 
@@ -37,25 +36,6 @@ export class EvolutionData extends LitElement {
         context: pokemonContext,
         initialValue: this.pokemonInit
     });
-/*
-    private _consumerPoke = new ContextConsumer(this, {
-        context: pokemonContext,
-        callback: () => {
-            this._providerPoke.setValue(this.pokemonInit);
-        }
-    })*/
-
-    /*
-    private _consumerPokeList = new ContextConsumer(this, {
-    context: pokemonListContext,
-    callback: () => {
-      this._providerPokeList.setValue(this.pokemons);
-    }
-  });
-    */
-    
-
-
 
     render() {
         this.loadPokemon();

@@ -21,11 +21,6 @@ export class PokemonEvolution extends LitElement {
     @consume({context: pokemonContext, subscribe: true })
     private _pokemon?: Pokemon;
 
-    /*
-    
-    @consume({context: pokemonListContext, subscribe: true })
-    private _pokemonList?: Pokemon[];
-    */
 
     render() {
         this.evolutionList = this._pokemon?.evolutions!;
