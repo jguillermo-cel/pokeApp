@@ -21,3 +21,8 @@ npm run dev
 ```
 
 Esto iniciará el servidor de desarrollo.
+
+##Api necesaria
+
+El proyecto necesitará que el proyecto pokeApp_api esté levantado en el puerto 3002
+
