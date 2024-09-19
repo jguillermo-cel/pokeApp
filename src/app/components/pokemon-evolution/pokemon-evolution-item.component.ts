@@ -101,6 +101,10 @@ export class PokemonEvolutionItem extends LitElement {
         return typesArray[0].toLowerCase();
     }
 
+    dispatchEdit(){
+        this.dispatchEvent(new CustomEvent("edit", { detail: this.evolution }));
+    }
+
     render(){
 
         return html`
@@ -111,6 +115,9 @@ export class PokemonEvolutionItem extends LitElement {
                 </div>
                 <div class="pei_types">
                     ${this.getTypes(this.evolution.type)}
+                </div>
+                <div class="pei_edit">
+                    <button-component label="Editar" @click="${this.dispatchEdit}" ></button-component>
                 </div>
             </div>
             <div class="pei_image">

@@ -11,7 +11,7 @@ export class ButtonComponent extends LitElement {
                 display: block;
             }
 
-            button {
+            .btn-main {
                 background-color: #4CAF50;
                 border: none;
                 color: white;
@@ -27,15 +27,15 @@ export class ButtonComponent extends LitElement {
                 transition-duration: 0.4s;
             }
 
-            button:hover {
+            .btn-main:hover {
                 background-color: #3e8e41; 
             }
 
-            .red button{
+            .red.btn-main{
                 background-color: #f44336;
             }
 
-            .red button:hover {
+            .red.btn-main:hover {
                 background-color: #da190b;
             }
         `;
@@ -44,10 +44,13 @@ export class ButtonComponent extends LitElement {
     @property()
     label?: string;
 
+    @property()
+    class?: string;
+
 
     render() {
         return html`
-            <button>${this.label}</button>    
+            <button class="btn-main ${this.class}">${this.label}</button>    
             `;
     }
 }
