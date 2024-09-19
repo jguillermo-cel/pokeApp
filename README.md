@@ -26,3 +26,5 @@ Esto iniciará el servidor de desarrollo.
 
 El proyecto necesitará que el proyecto pokeApp_api esté levantado en el puerto 3002
 
+https://github.com/jguillermo-cel/pokeApp_api
+
