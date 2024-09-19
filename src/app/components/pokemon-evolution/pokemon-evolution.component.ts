@@ -21,11 +21,19 @@ export class PokemonEvolution extends LitElement {
     @consume({context: pokemonContext, subscribe: true })
     private _pokemon?: Pokemon;
 
+    
+    
+
+    handleEdit(event: CustomEvent) {
+        const value = event.detail;
+        this.dispatchEvent(new CustomEvent("edit", { detail: value }));
+    }
+
 
     render() {
         this.evolutionList = this._pokemon?.evolutions!;
         return html`
-            ${this.evolutionList.map((evolution: Evolution) => html`<pokemon-evolution-item .evolution=${evolution} ></pokemon-evolution-item>`)}
+            ${this.evolutionList.map((evolution: Evolution) => html`<pokemon-evolution-item @edit=${this.handleEdit} .evolution=${evolution} ></pokemon-evolution-item> `)}
         `;
     }
 
