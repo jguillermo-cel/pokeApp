@@ -5,6 +5,7 @@ import { Evolution } from "../../interfaces/evolution.interface";
 import "./../../components/basic/pokemon-type/pokemon-type.component";
 import { Pokemon } from "../../interfaces/pokemon.interface";
 
+
 @customElement("pokemon-component")
 export class PokemonComponent extends LitElement {
 
@@ -16,14 +17,15 @@ export class PokemonComponent extends LitElement {
             }
 
             .pokemon-type{
-                margin-bottom: 5px;
+                margin-bottom: 10px;
             }
             
             .card{
-                background-color: blue;
-                max-width: 330px;
-                max-height: 330px;
-                padding: 10px;
+                height: 260px;
+                width: 290px;
+                padding: 10px 25px;
+                border-radius: 25px;
+                box-shadow: 1px 1px 7px -1px rgb(0 0 0 / 67%);
             }
 
             .card.pointer{
@@ -32,16 +34,61 @@ export class PokemonComponent extends LitElement {
 
             .card_image{
                 text-align: center;
+                display: flex;
+                align-items: center;
             }
 
             .card_image img{
-                max-width: 150px;    
+                max-width: 130px;    
+            }
+
+            .card_image img:hover{
+                transform: scale(1.2);
+                transition: 0.5s;
             }
 
             .card_body{
                 display: flex;
                 justify-content: space-around;
+                min-height: 180px;
             }
+
+            .grass{
+                background-color: #71C671;
+            }
+
+            .fire{
+                background-color: #F08030;
+            }
+
+            .water{
+                background-color: #6890F0;
+            }
+            .electric{
+                background-color: #F8D030;
+            }
+
+            .normal{
+                background-color: #c48a8a;
+            }   
+
+            .ghost{
+                background-color: #66b;
+            }
+
+            .fighting{
+                background-color: #b54;
+            }
+
+            .rock{
+                background-color: #ba6;
+            }
+
+            .psychic{
+                background-color: #f59;
+            }
+
+
         `;
     }
 
@@ -82,9 +129,14 @@ export class PokemonComponent extends LitElement {
         return this.pokemon.evolutions.length > 0;
     }
 
+    getMainTypeClass(types: string) {
+        let typesArray = types.split("/");
+        return typesArray[0].toLowerCase();
+    }
+
     render() {
         return html`
-            <div class="card ${this.addPointer()}" @click=${this._onClick}>
+            <div class="card ${this.addPointer()} ${this.getMainTypeClass(this.pokemon.type)}" @click=${this._onClick}>
                 <div class="card_title">
                     <h1>${this.pokemon.name}</h1>
                 </div>

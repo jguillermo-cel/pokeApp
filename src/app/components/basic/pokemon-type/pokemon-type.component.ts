@@ -12,12 +12,13 @@ export class PokemonType extends LitElement {
 
             .pokemon-type {
                 color: #fff;
-                background-color: rgb(255 255 255 / 40%);
+                background-color: rgb(255 255 255 / 25%);
                 border-radius: 50px;
                 padding: 5px 10px;
                 font-size: 0.8rem;
                 min-width: 100px;
                 text-align: center;
+                font-weight: bold;
             }
         `;
     }

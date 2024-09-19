@@ -16,6 +16,14 @@ export class PokedexPage extends LitElement {
             :host {
                 display: block;
             }
+
+            .page-pokedex{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                padding: 20px;
+                justify-content: center;
+            }
         `;
     }
 
@@ -38,7 +46,7 @@ export class PokedexPage extends LitElement {
         console.log(this._pokemonList);
         return html`
             <header-component title="Pokedex"></header-component>
-            <div class="">
+            <div class="page-pokedex">
                 ${this._pokemonList?.map((pokemon: Pokemon) => html`<pokemon-component .pokemon=${pokemon} ></pokemon-component>`) }
             </div>
         `;  
