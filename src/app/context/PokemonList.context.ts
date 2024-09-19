@@ -14,7 +14,14 @@ export const levelContext = createContext<Level>(Symbol('level'));
 
 // context main
 
-export type PokemonContext = Pokemon[];
+export type PokemonListContext = Pokemon[];
+
+export const pokemonListContext = createContext<PokemonListContext>( Symbol('pokemonListSymbol') );
+
+
+
+// context pokemon
+
+export type PokemonContext = Pokemon;
 
 export const pokemonContext = createContext<PokemonContext>( Symbol('pokemonSymbol') );
-
